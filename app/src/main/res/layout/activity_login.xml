@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/checkphone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="휴대폰 본인확인"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/authentication_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:text="안전한 서비스를 위해 전화번호를 인증해주세요"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkphone_tv" />
+
+    <LinearLayout
+        android:id="@+id/id_text_input_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/authentication_tv"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/id_text_input_et"
+            android:hint="이름"
+            android:maxLines="1"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:background="@drawable/edittext_rounded_corner_rectangle"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </EditText>
+        <Spinner
+            android:id="@+id/nationality_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_spinner_foreigner"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/birth_text_input_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/id_text_input_ll"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/birth_text_input_et"
+            android:hint="생년월일 (YYYYMMDD)"
+            android:maxLines="1"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:background="@drawable/edittext_rounded_corner_rectangle"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </EditText>
+        <Spinner
+            android:id="@+id/spinner_mf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_spinner_foreigner"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/agency_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/birth_text_input_ll"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/agency_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_spinner_foreigner"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/phonenumber_num_input_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/agency_ll"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/phonenumber_num_input_et"
+            android:hint="-없이 입력"
+            android:maxLines="1"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:background="@drawable/edittext_rounded_corner_rectangle"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </EditText>
+
+        <android.widget.Button
+            android:id="@+id/authentication_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="인증번호 요청"
+            android:maxLines="1"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="13sp"
+            android:textColor="#186AFF"
+            android:background="@drawable/certification_number"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+
+
+    <android.widget.Button
+        android:id="@+id/loginwithspot_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/loginspot"
+        android:text="다음"
+        android:textColor="#186AFF"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
