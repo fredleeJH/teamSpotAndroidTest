@@ -1,32 +1,39 @@
 package com.example.teamspot
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.annotation.LayoutRes
 import com.example.teamspot.databinding.ItemSpinnerHomeRegisterBinding
 
-class CategorySpinnerAdapter(context: Context, @LayoutRes private val resId:Int, private val categoryList : List<String>):
-    ArrayAdapter<String>(context,resId,categoryList){
-    // 드롭다운하지 않은 상태의 Spinner 항목 뷰
-    @SuppressLint("ViewHolder")
+class CategorySpinnerAdapter(
+    context: Context,
+    private val categoryList: List<String>
+) : ArrayAdapter<String>(context, 0, categoryList) {
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var itemSpinnerHomeRegisterBinding = ItemSpinnerHomeRegisterBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        itemSpinnerHomeRegisterBinding.textViewHomeRegisterSpinnerItem.text = categoryList[position]
-        return itemSpinnerHomeRegisterBinding.root
+        val binding: ItemSpinnerHomeRegisterBinding
+        val view: View
+
+        if (convertView == null) {
+            binding = ItemSpinnerHomeRegisterBinding.inflate(LayoutInflater.from(context), parent, false)
+            view = binding.root
+            view.tag = binding
+        } else {
+            binding = convertView.tag as ItemSpinnerHomeRegisterBinding
+            view = convertView
+        }
+
+        binding.text1.text = categoryList[position]
+        return view
     }
 
-    // 드롭다운된 항목들 리스트의 뷰
-    @SuppressLint("ViewHolder")
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var itemSpinnerHomeRegisterBinding = ItemSpinnerHomeRegisterBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        itemSpinnerHomeRegisterBinding.textViewHomeRegisterSpinnerItem.text = categoryList[position]
-        return itemSpinnerHomeRegisterBinding.root
+        return getView(position, convertView, parent)
     }
 
-    override fun getCount() = categoryList.size
-
+    override fun getCount(): Int {
+        return categoryList.size
+    }
 }

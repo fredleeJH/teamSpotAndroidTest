@@ -14,5 +14,8 @@ class StartLoginActivity : AppCompatActivity() {
 
         val intent = Intent(this, LoginActivity::class.java)
         binding.loginwithspotBt.setOnClickListener {startActivity(intent)}
+
+        val intent2 = Intent(this, CheckListCategoryActivity::class.java)
+        binding.loginwithkakaoBt.setOnClickListener { startActivity(intent2) }
     }
 }

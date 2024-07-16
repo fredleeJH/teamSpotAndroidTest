@@ -38,7 +38,7 @@
 
                 android:width="1dp"
 
-                android:color="#EEEEEE" />
+                android:color="#D8D8D8" />
 
             <corners android:radius="8dp"/>
 
