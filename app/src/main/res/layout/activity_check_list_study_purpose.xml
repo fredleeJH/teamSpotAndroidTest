@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -45,39 +43,37 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checklist_v">
+        app:layout_constraintTop_toBottomOf="@id/checklist_v"/>
 
-    </TextView>
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexbox_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checklist_tv"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
-        app:chipSpacingHorizontal="12dp"
-        app:singleLine="false">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checklist_tv"
+        app:flexDirection="column"
+        app:justifyContent="flex_start"
+        app:flexWrap="nowrap">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_language"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="어학"
+            android:text="동기부여가 필요해요."
             android:textSize="16sp"
             app:chipStartPadding="15dp"
             app:chipEndPadding="15dp"
             app:chipMinHeight="40dp"/>
-
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_license"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="자격증"
+            android:text="스터디원이 필요해요."
             android:textSize="16sp"
             app:chipStartPadding="15dp"
             app:chipEndPadding="15dp"
@@ -88,7 +84,7 @@
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취업"
+            android:text="혼자서 하기엔 의지가 부족해요."
             android:textSize="16sp"
             app:chipStartPadding="15dp"
             app:chipEndPadding="15dp"
@@ -99,7 +95,7 @@
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토론"
+            android:text="목표를 가진 사람들과 친해지고 싶어요."
             android:textSize="16sp"
             app:chipStartPadding="15dp"
             app:chipEndPadding="15dp"
@@ -110,70 +106,12 @@
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="시사/뉴스"
+            android:text="다양한 정보를 공유하고, 받고 싶어요."
             android:textSize="16sp"
             app:chipStartPadding="15dp"
             app:chipEndPadding="15dp"
             app:chipMinHeight="40dp"/>
-
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_selfstudy"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="자율 학습"
-            android:textSize="16sp"
-            app:chipStartPadding="15dp"
-            app:chipEndPadding="15dp"
-            app:chipMinHeight="40dp"/>
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_project"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="프로젝트"
-            android:textSize="16sp"
-            app:chipStartPadding="15dp"
-            app:chipEndPadding="15dp"
-            app:chipMinHeight="40dp"/>
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_exhibit"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="공모전"
-            android:textSize="16sp"
-            app:chipStartPadding="15dp"
-            app:chipEndPadding="15dp"
-            app:chipMinHeight="40dp"/>
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_major"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="전공/진로학습"
-            android:textSize="16sp"
-            app:chipStartPadding="15dp"
-            app:chipEndPadding="15dp"
-            app:chipMinHeight="40dp"/>
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_etc"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="기타"
-            android:textSize="16sp"
-            app:chipStartPadding="15dp"
-            app:chipEndPadding="15dp"
-            app:chipMinHeight="40dp"/>
-
-
-    </com.google.android.material.chip.ChipGroup>
-
+    </com.google.android.flexbox.FlexboxLayout>
 
     <android.widget.Button
         android:id="@+id/checklistspot_next_bt"
@@ -191,7 +129,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

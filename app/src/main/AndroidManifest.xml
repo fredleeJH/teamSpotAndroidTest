@@ -12,6 +12,20 @@
         android:theme="@style/Theme.TeamSpot"
         tools:targetApi="31">
         <activity
+            android:name=".CheckListLocationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CheckListStudyPurposeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CheckListCategoryActivity"
             android:exported="false">
             <meta-data

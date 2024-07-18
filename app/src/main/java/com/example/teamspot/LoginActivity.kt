@@ -123,7 +123,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 성별 Spinner 설정
-        val genderAdapter = ArrayAdapter(this, R.layout.item_spinner_home_register, listOf("남자", "여자"))
+        val genderAdapter = ArrayAdapter(this, R.layout.item_spinner_home_register, listOf("남성", "여성"))
         binding.spinnerMf.adapter = genderAdapter
 
         binding.spinnerMf.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
