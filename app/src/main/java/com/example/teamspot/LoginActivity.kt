@@ -8,7 +8,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import com.example.teamspot.databinding.ActivityLoginBinding
 
@@ -160,7 +159,7 @@ class LoginActivity : AppCompatActivity() {
         val drawable = if (input == certificationCode) {
             ContextCompat.getDrawable(this, R.drawable.true_check)
         } else {
-            ContextCompat.getDrawable(this, R.drawable.img)
+            ContextCompat.getDrawable(this, R.drawable.false_check)
         }
 
         // 아이콘의 크기를 EditText의 글자 크기의 1.5배로 설정

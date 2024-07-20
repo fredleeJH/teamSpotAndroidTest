@@ -1,21 +1,67 @@
 package com.example.teamspot
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.teamspot.databinding.ActivityStartLoginBinding
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.common.model.AppsErrorCause
+import com.kakao.sdk.common.model.AuthErrorCause
+import com.kakao.sdk.user.UserApiClient
 
 class StartLoginActivity : AppCompatActivity() {
-    lateinit var binding: ActivityStartLoginBinding
+    private lateinit var binding: ActivityStartLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStartLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = Intent(this, LoginActivity::class.java)
-        binding.loginwithspotBt.setOnClickListener {startActivity(intent)}
+        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+            if (error != null) {
+                Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+            } else if (tokenInfo != null) {
+                Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LogoutActivity::class.java)
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                finish()
+            }
+        }
 
-        val intent2 = Intent(this, CheckListCategoryActivity::class.java)
-        binding.loginwithkakaoBt.setOnClickListener { startActivity(intent2) }
+        val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+            if (error != null) {
+                val message = when (error.toString()) {
+                    AuthErrorCause.AccessDenied.toString() -> "접근이 거부 됨(동의 취소)"
+                    AuthErrorCause.InvalidClient.toString() -> "유효하지 않은 앱"
+                    AuthErrorCause.InvalidGrant.toString() -> "인증 수단이 유효하지 않아 인증할 수 없는 상태"
+                    AppsErrorCause.InvalidRequest.toString() -> "요청 파라미터 오류"
+                    AppsErrorCause.InvalidScope.toString() -> "유효하지 않은 scope ID"
+                    AuthErrorCause.Misconfigured.toString() -> "설정이 올바르지 않음(android key hash)"
+                    AuthErrorCause.ServerError.toString() -> "서버 내부 에러"
+                    AuthErrorCause.Unauthorized.toString() -> "앱이 요청 권한이 없음"
+                    else -> "기타 에러"
+                }
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            } else if (token != null) {
+                Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LogoutActivity::class.java)
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                finish()
+            }
+        }
+
+        binding.loginwithkakaoBt.setOnClickListener {
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
+                UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
+            } else {
+                UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
+            }
+        }
+
+        binding.loginwithspotBt.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
